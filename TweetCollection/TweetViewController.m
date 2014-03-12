@@ -7,7 +7,8 @@
 //
 
 #import "TweetViewController.h"
-#import "TweetController.h"
+#import "TweetStream.h"
+#import "Tweet.h"
 
 @interface UIColor (Random)
 
@@ -27,10 +28,11 @@
 
 @end
 
-@interface TweetViewController ()
+@interface TweetViewController () <TweetStreamDelegate>
 
 @property (nonatomic, strong) NSArray *tweets;
-@property (nonatomic, strong) TweetController *tweetController;
+@property (nonatomic, strong) TweetStream *tweetController;
+@property (nonatomic, strong) NSCache *imageCache;
 
 @end
 
@@ -46,15 +48,34 @@
     [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:array.count - 1 inSection:section]]];
 }
 
-- (void)viewDidLoad
-{
-    self.tweets = @[[NSMutableArray arrayWithArray:@[@"#mobilemarch"]],
-                    [NSMutableArray arrayWithArray:@[@"#mobilemarch"]]];
-    
-    self.tweetController = [[TweetController alloc] init];
-    [self.tweetController startStreamingTweetsForHashtag:@"#sxsw"];
+#pragma mark - TweetStreamDelegate methods
 
+- (void)stream:(TweetStream *)stream didRecieveTweet:(Tweet *)tweet
+{
+    NSLog(@"got a tweet: %@", tweet);
+    int section = arc4random_uniform(2);
+    
+    NSURLSessionDataTask *profileImageDataTask =
+    [[NSURLSession sharedSession] dataTaskWithURL:tweet.profileImageURL
+                                completionHandler:^(NSData *data,
+                                                    NSURLResponse *response,
+                                                    NSError *error) {
+                                    UIImage *image = [UIImage imageWithData:data];
+                                    [self.imageCache setObject:image
+                                                        forKey:tweet.profileImageURL];
+                                   
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        NSMutableArray *array = [self tweetsForSection:section];
+                                        [array addObject:tweet];
+                                        
+                                        [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:array.count - 1 inSection:section]]];                                        
+                                    });
+                                }];
+    
+    [profileImageDataTask resume];
 }
+
+#pragma mark - UICollectionViewDataSource methods
 
 - (NSMutableArray *)tweetsForSection:(NSInteger)section
 {
@@ -79,10 +100,38 @@
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier
                                                                            forIndexPath:indexPath];
-    
     cell.backgroundColor = [UIColor randomColor];
     
+    Tweet *tweetForCell = self.tweets[indexPath.section][indexPath.row];
+    UIImage *image = [self.imageCache objectForKey:tweetForCell.profileImageURL];
+    
+    if (image)
+    {
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        imageView.frame = cell.contentView.bounds;
+        imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [cell.contentView addSubview:imageView];
+    }
+
     return cell;
+}
+
+#pragma mark - UIViewController methods
+
+- (void)viewDidLoad
+{
+    self.imageCache = [[NSCache alloc] init];
+    self.imageCache.countLimit = 40;
+    
+//    self.tweets = @[[NSMutableArray arrayWithArray:@[@"#mobilemarch"]],
+//                    [NSMutableArray arrayWithArray:@[@"#mobilemarch"]]];
+    self.tweets = @[[NSMutableArray array],
+                    [NSMutableArray array]];
+    
+    self.tweetController = [[TweetStream alloc] init];
+    self.tweetController.delegate = self;
+    
+    [self.tweetController startStreamingTweetsForHashtag:@"#awesome"];
 }
 
 @end

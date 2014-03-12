@@ -20,11 +20,14 @@
 		66141CD518CB7E38000FC906 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66141CB418CB7E38000FC906 /* Foundation.framework */; };
 		66141CD618CB7E38000FC906 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66141CB818CB7E38000FC906 /* UIKit.framework */; };
 		66141CDE18CB7E38000FC906 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66141CDC18CB7E38000FC906 /* InfoPlist.strings */; };
-		66141CE018CB7E38000FC906 /* TweetCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66141CDF18CB7E38000FC906 /* TweetCollectionTests.m */; };
 		66141CEB18CB7EF3000FC906 /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66141CEA18CB7EF3000FC906 /* TweetViewController.m */; };
 		66141CEE18CB860D000FC906 /* BalancedScaleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 66141CED18CB860D000FC906 /* BalancedScaleLayout.m */; };
 		66141CF018CD01B0000FC906 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66141CEF18CD01B0000FC906 /* Social.framework */; };
-		66141CF318CD0261000FC906 /* TweetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66141CF218CD0261000FC906 /* TweetController.m */; };
+		66141CF318CD0261000FC906 /* TweetStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 66141CF218CD0261000FC906 /* TweetStream.m */; };
+		6629718218CFFE8500FBA326 /* libMantle-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6629717B18CFFE4E00FBA326 /* libMantle-iOS.a */; };
+		6629718518CFFF2F00FBA326 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6629718418CFFF2F00FBA326 /* Tweet.m */; };
+		6629718718D0039300FBA326 /* TweetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6629718618D0039300FBA326 /* TweetTests.m */; };
+		6629718918D0052700FBA326 /* tweet.json in Resources */ = {isa = PBXBuildFile; fileRef = 6629718818D0052700FBA326 /* tweet.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,41 @@
 			proxyType = 1;
 			remoteGlobalIDString = 66141CB018CB7E38000FC906;
 			remoteInfo = TweetCollection;
+		};
+		6629717618CFFE4E00FBA326 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6629716C18CFFE4D00FBA326 /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC3C15F72B23004E8054;
+			remoteInfo = Mantle;
+		};
+		6629717818CFFE4E00FBA326 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6629716C18CFFE4D00FBA326 /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC5415F72B23004E8054;
+			remoteInfo = "Mantle Tests";
+		};
+		6629717A18CFFE4E00FBA326 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6629716C18CFFE4D00FBA326 /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC7915F72BC7004E8054;
+			remoteInfo = "Mantle-iOS";
+		};
+		6629717C18CFFE4E00FBA326 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6629716C18CFFE4D00FBA326 /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC8715F72BC7004E8054;
+			remoteInfo = "Mantle-iOS Tests";
+		};
+		6629717E18CFFE4E00FBA326 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6629716C18CFFE4D00FBA326 /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0A56B461804B04900A84EDC;
+			remoteInfo = "Mantle-Mac";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -56,14 +94,18 @@
 		66141CD318CB7E38000FC906 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		66141CDB18CB7E38000FC906 /* TweetCollectionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TweetCollectionTests-Info.plist"; sourceTree = "<group>"; };
 		66141CDD18CB7E38000FC906 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		66141CDF18CB7E38000FC906 /* TweetCollectionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCollectionTests.m; sourceTree = "<group>"; };
 		66141CE918CB7EF3000FC906 /* TweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewController.h; sourceTree = "<group>"; };
 		66141CEA18CB7EF3000FC906 /* TweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewController.m; sourceTree = "<group>"; };
 		66141CEC18CB860D000FC906 /* BalancedScaleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalancedScaleLayout.h; sourceTree = "<group>"; };
 		66141CED18CB860D000FC906 /* BalancedScaleLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalancedScaleLayout.m; sourceTree = "<group>"; };
 		66141CEF18CD01B0000FC906 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		66141CF118CD0261000FC906 /* TweetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetController.h; sourceTree = "<group>"; };
-		66141CF218CD0261000FC906 /* TweetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetController.m; sourceTree = "<group>"; };
+		66141CF118CD0261000FC906 /* TweetStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetStream.h; sourceTree = "<group>"; };
+		66141CF218CD0261000FC906 /* TweetStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetStream.m; sourceTree = "<group>"; };
+		6629716C18CFFE4D00FBA326 /* Mantle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mantle.xcodeproj; path = Mantle/Mantle.xcodeproj; sourceTree = "<group>"; };
+		6629718318CFFF2F00FBA326 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
+		6629718418CFFF2F00FBA326 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		6629718618D0039300FBA326 /* TweetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetTests.m; sourceTree = "<group>"; };
+		6629718818D0052700FBA326 /* tweet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tweet.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6629718218CFFE8500FBA326 /* libMantle-iOS.a in Frameworks */,
 				66141CF018CD01B0000FC906 /* Social.framework in Frameworks */,
 				66141CB718CB7E38000FC906 /* CoreGraphics.framework in Frameworks */,
 				66141CB918CB7E38000FC906 /* UIKit.framework in Frameworks */,
@@ -113,6 +156,7 @@
 		66141CB318CB7E38000FC906 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6629716C18CFFE4D00FBA326 /* Mantle.xcodeproj */,
 				66141CEF18CD01B0000FC906 /* Social.framework */,
 				66141CB418CB7E38000FC906 /* Foundation.framework */,
 				66141CB618CB7E38000FC906 /* CoreGraphics.framework */,
@@ -136,8 +180,10 @@
 				66141CEA18CB7EF3000FC906 /* TweetViewController.m */,
 				66141CEC18CB860D000FC906 /* BalancedScaleLayout.h */,
 				66141CED18CB860D000FC906 /* BalancedScaleLayout.m */,
-				66141CF118CD0261000FC906 /* TweetController.h */,
-				66141CF218CD0261000FC906 /* TweetController.m */,
+				66141CF118CD0261000FC906 /* TweetStream.h */,
+				66141CF218CD0261000FC906 /* TweetStream.m */,
+				6629718318CFFF2F00FBA326 /* Tweet.h */,
+				6629718418CFFF2F00FBA326 /* Tweet.m */,
 			);
 			path = TweetCollection;
 			sourceTree = "<group>";
@@ -156,8 +202,8 @@
 		66141CD918CB7E38000FC906 /* TweetCollectionTests */ = {
 			isa = PBXGroup;
 			children = (
-				66141CDF18CB7E38000FC906 /* TweetCollectionTests.m */,
 				66141CDA18CB7E38000FC906 /* Supporting Files */,
+				6629718618D0039300FBA326 /* TweetTests.m */,
 			);
 			path = TweetCollectionTests;
 			sourceTree = "<group>";
@@ -167,8 +213,21 @@
 			children = (
 				66141CDB18CB7E38000FC906 /* TweetCollectionTests-Info.plist */,
 				66141CDC18CB7E38000FC906 /* InfoPlist.strings */,
+				6629718818D0052700FBA326 /* tweet.json */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6629716D18CFFE4D00FBA326 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6629717718CFFE4E00FBA326 /* Mantle.framework */,
+				6629717918CFFE4E00FBA326 /* Mantle Tests.octest */,
+				6629717B18CFFE4E00FBA326 /* libMantle-iOS.a */,
+				6629717D18CFFE4E00FBA326 /* Mantle-iOS Tests.octest */,
+				6629717F18CFFE4E00FBA326 /* libMantle-Mac.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +293,12 @@
 			mainGroup = 66141CA818CB7E38000FC906;
 			productRefGroup = 66141CB218CB7E38000FC906 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6629716D18CFFE4D00FBA326 /* Products */;
+					ProjectRef = 6629716C18CFFE4D00FBA326 /* Mantle.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				66141CB018CB7E38000FC906 /* TweetCollection */,
@@ -241,6 +306,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6629717718CFFE4E00FBA326 /* Mantle.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Mantle.framework;
+			remoteRef = 6629717618CFFE4E00FBA326 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6629717918CFFE4E00FBA326 /* Mantle Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Mantle Tests.octest";
+			remoteRef = 6629717818CFFE4E00FBA326 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6629717B18CFFE4E00FBA326 /* libMantle-iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libMantle-iOS.a";
+			remoteRef = 6629717A18CFFE4E00FBA326 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6629717D18CFFE4E00FBA326 /* Mantle-iOS Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Mantle-iOS Tests.octest";
+			remoteRef = 6629717C18CFFE4E00FBA326 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6629717F18CFFE4E00FBA326 /* libMantle-Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libMantle-Mac.a";
+			remoteRef = 6629717E18CFFE4E00FBA326 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		66141CAF18CB7E38000FC906 /* Resources */ = {
@@ -258,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66141CDE18CB7E38000FC906 /* InfoPlist.strings in Resources */,
+				6629718918D0052700FBA326 /* tweet.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,8 +373,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				66141CEB18CB7EF3000FC906 /* TweetViewController.m in Sources */,
-				66141CF318CD0261000FC906 /* TweetController.m in Sources */,
+				66141CF318CD0261000FC906 /* TweetStream.m in Sources */,
 				66141CCB18CB7E38000FC906 /* ViewController.m in Sources */,
+				6629718518CFFF2F00FBA326 /* Tweet.m in Sources */,
 				66141CC518CB7E38000FC906 /* AppDelegate.m in Sources */,
 				66141CC118CB7E38000FC906 /* main.m in Sources */,
 				66141CEE18CB860D000FC906 /* BalancedScaleLayout.m in Sources */,
@@ -281,7 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66141CE018CB7E38000FC906 /* TweetCollectionTests.m in Sources */,
+				6629718718D0039300FBA326 /* TweetTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +463,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -390,6 +496,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -482,6 +589,7 @@
 				66141CE518CB7E38000FC906 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		66141CE618CB7E38000FC906 /* Build configuration list for PBXNativeTarget "TweetCollectionTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +598,7 @@
 				66141CE818CB7E38000FC906 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
