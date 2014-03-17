@@ -116,7 +116,7 @@
                 UICollectionViewLayoutAttributes *item = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
                 item.frame = CGRectMake(0.5 * self.collectionViewContentSize.width,
                                         self.collectionViewContentSize.height + 20,
-                                        20, 20);
+                                        40, 40);
                 [items addObject:item];
             }
         }
@@ -169,7 +169,7 @@
             UICollectionViewLayoutAttributes *item = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
             item.frame = CGRectMake(0.5 * self.collectionViewContentSize.width,
                                     self.collectionViewContentSize.height + 20,
-                                    20, 20);
+                                    40, 40);
             
             UIOffset attachmentOffset = [self beamOffsetForIndexPath:path];
             

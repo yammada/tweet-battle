@@ -169,6 +169,7 @@
 		66141CBA18CB7E38000FC906 /* TweetCollection */ = {
 			isa = PBXGroup;
 			children = (
+				6629718A18D01EE200FBA326 /* iPad */,
 				66141CC318CB7E38000FC906 /* AppDelegate.h */,
 				66141CC418CB7E38000FC906 /* AppDelegate.m */,
 				66141CC618CB7E38000FC906 /* Main.storyboard */,
@@ -228,6 +229,13 @@
 				6629717F18CFFE4E00FBA326 /* libMantle-Mac.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6629718A18D01EE200FBA326 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -510,7 +518,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TweetCollection/TweetCollection-Prefix.pch";
 				INFOPLIST_FILE = "TweetCollection/TweetCollection-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -523,7 +533,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TweetCollection/TweetCollection-Prefix.pch";
 				INFOPLIST_FILE = "TweetCollection/TweetCollection-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

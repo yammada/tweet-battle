@@ -10,24 +10,6 @@
 #import "TweetStream.h"
 #import "Tweet.h"
 
-@interface UIColor (Random)
-
-+ (UIColor *)randomColor;
-
-@end
-
-@implementation UIColor (Random)
-
-+ (UIColor *)randomColor
-{
-    return [UIColor colorWithRed:drand48()
-                           green:drand48()
-                            blue:drand48()
-                           alpha:1.0];
-}
-
-@end
-
 @interface TweetViewController () <TweetStreamDelegate>
 
 @property (nonatomic, strong) NSArray *tweets;
@@ -43,7 +25,9 @@
 {
     int section = arc4random_uniform(2);
     NSMutableArray *array = [self tweetsForSection:section];
-    [array addObject:@"#mobilemarch"];
+    
+    Tweet *randomTweet = [[Tweet alloc] init];
+    [array addObject:randomTweet];
 
     [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:array.count - 1 inSection:section]]];
 }
@@ -100,18 +84,18 @@
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier
                                                                            forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor randomColor];
-    
     Tweet *tweetForCell = self.tweets[indexPath.section][indexPath.row];
+
     UIImage *image = [self.imageCache objectForKey:tweetForCell.profileImageURL];
-    
-    if (image)
+    if (!image)
     {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.frame = cell.contentView.bounds;
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [cell.contentView addSubview:imageView];
+        image = [UIImage imageNamed:@"profile-image-placeholder"];
     }
+        
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = cell.contentView.bounds;
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [cell.contentView addSubview:imageView];
 
     return cell;
 }
@@ -123,8 +107,6 @@
     self.imageCache = [[NSCache alloc] init];
     self.imageCache.countLimit = 40;
     
-//    self.tweets = @[[NSMutableArray arrayWithArray:@[@"#mobilemarch"]],
-//                    [NSMutableArray arrayWithArray:@[@"#mobilemarch"]]];
     self.tweets = @[[NSMutableArray array],
                     [NSMutableArray array]];
     
