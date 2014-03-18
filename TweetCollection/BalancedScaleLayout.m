@@ -1,50 +1,20 @@
-//
-//  BalancedScaleLayout.m
-//  TweetCollection
-//
-//  Created by Adam May on 3/8/14.
-//  Copyright (c) 2014 Livefront. All rights reserved.
-//
-
 #import "BalancedScaleLayout.h"
+#import "BeamAttachmentBehavior.h"
+#import "BeamView.h"
 
-@interface BeamView : UICollectionReusableView
-
-+ (NSString *)kind;
-
-@end
-
-@implementation BeamView
-
-+ (NSString *)kind
-{
-    return NSStringFromClass(self);
-}
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    
-    if (self)
-    {
-        self.backgroundColor = [UIColor grayColor];
-    }
-    
-    return self;
-}
-
-@end
+static CGSize const kItemSize = {40.0f, 40.0f};
 
 @interface BalancedScaleLayout ()
 
 @property (nonatomic, strong) UIDynamicAnimator *animator;
-
-@property (nonatomic, strong) UIGravityBehavior *gravity;
-@property (nonatomic, strong) UICollisionBehavior *collisions;
+@property (nonatomic, strong) UIGravityBehavior *gravityBehavior;
+@property (nonatomic, strong) UICollisionBehavior *collisionBehavior;
 
 @end
 
 @implementation BalancedScaleLayout
+
+#pragma mark - Init methods
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -53,39 +23,43 @@
     if (self)
     {
         [self registerClass:[BeamView class] forDecorationViewOfKind:[BeamView kind]];
+
+        self.animator = [[UIDynamicAnimator alloc] initWithCollectionViewLayout:self];
     }
     
     return self;
 }
 
-- (UIOffset)beamOffsetForIndexPath:(NSIndexPath *)indexPath
+#pragma mark - Private methods
+
+- (CGRect)beamFrame
 {
     CGFloat beamWidth = 0.5 * self.collectionViewContentSize.width;
-    if (indexPath.section == 0)
+    
+    return (CGRect)
     {
-        return UIOffsetMake(-beamWidth * 0.5 + 10, 0);
-    }
-    else
+        .origin.x = CGRectGetMidX(self.collectionView.bounds) - beamWidth * 0.5,
+        .origin.y = CGRectGetMidY(self.collectionView.bounds),
+        .size.width = beamWidth,
+        .size.height = 10.0f
+    };
+}
+
+- (CGRect)itemFrame
+{
+    return (CGRect)
     {
-        return UIOffsetMake(beamWidth * 0.5 - 10, 0);
-    }
+        .origin.x = CGRectGetMidX(self.collectionView.bounds) - kItemSize.width * 0.5,
+        .origin.y = CGRectGetMaxY(self.collectionView.bounds) + kItemSize.height,
+        .size = kItemSize
+    };
 }
 
 #pragma mark - UICollectionViewLayout methods
 
 - (CGSize)collectionViewContentSize
 {
-    return self.collectionView.frame.size;
-}
-
-- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [self.animator layoutAttributesForCellAtIndexPath:indexPath];
-}
-
-- (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)decorationViewKind atIndexPath:(NSIndexPath *)indexPath
-{
-    return [self.animator layoutAttributesForDecorationViewOfKind:decorationViewKind atIndexPath:indexPath];
+    return self.collectionView.bounds.size;
 }
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
@@ -93,68 +67,41 @@
     return [self.animator itemsInRect:rect];
 }
 
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.animator layoutAttributesForCellAtIndexPath:indexPath];
+}
+
+- (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)decorationViewKind
+                                                                  atIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.animator layoutAttributesForDecorationViewOfKind:decorationViewKind
+                                                      atIndexPath:indexPath];
+}
+
 - (void)prepareLayout
 {
-    if (self.animator == nil)
-    {
-        self.animator = [[UIDynamicAnimator alloc] initWithCollectionViewLayout:self];
-    }
-    
     if (self.animator.behaviors.count == 0)
     {
-        //Add items to the animator
-        NSMutableArray *items = [NSMutableArray array];
-        
-        for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++)
-        {
-            NSInteger cellCount = [self.collectionView numberOfItemsInSection:section];
-            
-            for (NSInteger i = 0; i < cellCount; i++)
-            {
-                NSIndexPath *path = [NSIndexPath indexPathForItem:i inSection:section];
-                
-                UICollectionViewLayoutAttributes *item = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
-                item.frame = CGRectMake(0.5 * self.collectionViewContentSize.width,
-                                        self.collectionViewContentSize.height + 20,
-                                        40, 40);
-                [items addObject:item];
-            }
-        }
-        
-        UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:items];
-        [self.animator addBehavior:gravity];
-        
-        UICollisionBehavior *collisions = [[UICollisionBehavior alloc] initWithItems:items];
-        [self.animator addBehavior:collisions];
-        
-        // Create decoration views and add them to the animator
         UICollectionViewLayoutAttributes *beam = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:[BeamView kind]
-                                                                                                             withIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-        beam.size = CGSizeMake(0.5 * self.collectionViewContentSize.width, 10);
-        beam.center = CGPointMake(0.5 * self.collectionViewContentSize.width,
-                                  0.25 * self.collectionViewContentSize.height);
-        [gravity addItem:beam];
+                                                                                                             withIndexPath:[BeamView indexPath]];
+        beam.frame = [self beamFrame];
         
         UIDynamicItemBehavior *beamProperties = [[UIDynamicItemBehavior alloc] initWithItems:@[beam]];
-        beamProperties.angularResistance = 300.0;
+        beamProperties.angularResistance = 300.0f;
         [self.animator addBehavior:beamProperties];
         
-        UIAttachmentBehavior *beamAttachment = [[UIAttachmentBehavior alloc] initWithItem:beam attachedToAnchor:beam.center];
-        [self.animator addBehavior:beamAttachment];
+        UIAttachmentBehavior *attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:beam
+                                                                             attachedToAnchor:beam.center];
+        [self.animator addBehavior:attachmentBehavior];
         
-        for (UICollectionViewLayoutAttributes *item in items)
-        {
-            UIOffset attachmentOffset = [self beamOffsetForIndexPath:item.indexPath];
-            
-            UIAttachmentBehavior *itemBeamAttachment = [[UIAttachmentBehavior alloc] initWithItem:item offsetFromCenter:UIOffsetZero attachedToItem:beam offsetFromCenter:attachmentOffset];
-            itemBeamAttachment.length = 60.0;
-            itemBeamAttachment.damping = 0.4;
-            itemBeamAttachment.frequency = 1.0;
-            [self.animator addBehavior:itemBeamAttachment];
-        }
+        UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:@[beam]];
+        [self.animator addBehavior:gravity];
+        self.gravityBehavior = gravity;
         
-        self.gravity = gravity;
-        self.collisions = collisions;
+        UICollisionBehavior *collisions = [[UICollisionBehavior alloc] initWithItems:@[]];
+        [self.animator addBehavior:collisions];
+        self.collisionBehavior = collisions;
     }
 }
 
@@ -165,24 +112,18 @@
         if (item.updateAction == UICollectionUpdateActionInsert)
         {
             NSIndexPath *path = item.indexPathAfterUpdate;
-            
             UICollectionViewLayoutAttributes *item = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
-            item.frame = CGRectMake(0.5 * self.collectionViewContentSize.width,
-                                    self.collectionViewContentSize.height + 20,
-                                    40, 40);
+            item.frame = [self itemFrame];
             
-            UIOffset attachmentOffset = [self beamOffsetForIndexPath:path];
+            UICollectionViewLayoutAttributes *beam = [self layoutAttributesForDecorationViewOfKind:[BeamView kind]
+                                                                                       atIndexPath:[BeamView indexPath]];
+            BeamAttachmentBehavior *beamAttachment = [[BeamAttachmentBehavior alloc]
+                                                      initWithItem:item
+                                                      attachedToBeam:beam
+                                                      onLeft:(item.indexPath.section == 0)];
+            [self.animator addBehavior:beamAttachment];
             
-            UICollectionViewLayoutAttributes *beam = [self layoutAttributesForDecorationViewOfKind:[BeamView kind] atIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-            UIAttachmentBehavior *itemBeamAttachment = [[UIAttachmentBehavior alloc] initWithItem:item offsetFromCenter:UIOffsetZero attachedToItem:beam offsetFromCenter:attachmentOffset];
-            itemBeamAttachment.length = 60.0;
-            itemBeamAttachment.damping = 0.4;
-            itemBeamAttachment.frequency = 1.0;
-            [self.animator addBehavior:itemBeamAttachment];
-            
-            [self.gravity addItem:item];
-            [self.collisions addItem:item];
-            
+            [self.collisionBehavior addItem:item];
         }
     }
 }

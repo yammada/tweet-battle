@@ -13,7 +13,7 @@
 @interface TweetViewController () <TweetStreamDelegate>
 
 @property (nonatomic, strong) NSArray *tweets;
-@property (nonatomic, strong) TweetStream *tweetController;
+@property (nonatomic, strong) TweetStream *tweetStream;
 @property (nonatomic, strong) NSCache *imageCache;
 
 @end
@@ -110,10 +110,10 @@
     self.tweets = @[[NSMutableArray array],
                     [NSMutableArray array]];
     
-    self.tweetController = [[TweetStream alloc] init];
-    self.tweetController.delegate = self;
+    self.tweetStream = [[TweetStream alloc] init];
+    self.tweetStream.delegate = self;
     
-    [self.tweetController startStreamingTweetsForHashtag:@"#awesome"];
+    [self.tweetStream startStreamingTweetsForHashtag:@"#awesome"];
 }
 
 @end
