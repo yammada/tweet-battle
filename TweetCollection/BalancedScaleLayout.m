@@ -124,6 +124,7 @@ static CGSize const kItemSize = {40.0f, 40.0f};
             [self.animator addBehavior:beamAttachment];
             
             [self.collisionBehavior addItem:item];
+            [self.gravityBehavior addItem:item];
         }
     }
 }

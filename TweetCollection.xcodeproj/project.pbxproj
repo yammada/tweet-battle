@@ -14,7 +14,6 @@
 		66141CC118CB7E38000FC906 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66141CC018CB7E38000FC906 /* main.m */; };
 		66141CC518CB7E38000FC906 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66141CC418CB7E38000FC906 /* AppDelegate.m */; };
 		66141CC818CB7E38000FC906 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66141CC618CB7E38000FC906 /* Main.storyboard */; };
-		66141CCB18CB7E38000FC906 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66141CCA18CB7E38000FC906 /* ViewController.m */; };
 		66141CCD18CB7E38000FC906 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66141CCC18CB7E38000FC906 /* Images.xcassets */; };
 		66141CD418CB7E38000FC906 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66141CD318CB7E38000FC906 /* XCTest.framework */; };
 		66141CD518CB7E38000FC906 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66141CB418CB7E38000FC906 /* Foundation.framework */; };
@@ -30,6 +29,7 @@
 		6629718918D0052700FBA326 /* tweet.json in Resources */ = {isa = PBXBuildFile; fileRef = 6629718818D0052700FBA326 /* tweet.json */; };
 		6671447C18D80A790088C774 /* BeamView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6671447B18D80A790088C774 /* BeamView.m */; };
 		6671447F18D80CE20088C774 /* BeamAttachmentBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 6671447E18D80CE20088C774 /* BeamAttachmentBehavior.m */; };
+		6671448D18D8AC3E0088C774 /* TweetBattleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6671448C18D8AC3E0088C774 /* TweetBattleTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,8 +89,6 @@
 		66141CC318CB7E38000FC906 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		66141CC418CB7E38000FC906 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		66141CC718CB7E38000FC906 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		66141CC918CB7E38000FC906 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		66141CCA18CB7E38000FC906 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		66141CCC18CB7E38000FC906 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		66141CD218CB7E38000FC906 /* TweetCollectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TweetCollectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66141CD318CB7E38000FC906 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -112,6 +110,8 @@
 		6671447B18D80A790088C774 /* BeamView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamView.m; sourceTree = "<group>"; };
 		6671447D18D80CE20088C774 /* BeamAttachmentBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamAttachmentBehavior.h; sourceTree = "<group>"; };
 		6671447E18D80CE20088C774 /* BeamAttachmentBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamAttachmentBehavior.m; sourceTree = "<group>"; };
+		6671448B18D8AC3E0088C774 /* TweetBattleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetBattleTableViewController.h; sourceTree = "<group>"; };
+		6671448C18D8AC3E0088C774 /* TweetBattleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetBattleTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,8 +178,6 @@
 				66141CC318CB7E38000FC906 /* AppDelegate.h */,
 				66141CC418CB7E38000FC906 /* AppDelegate.m */,
 				66141CC618CB7E38000FC906 /* Main.storyboard */,
-				66141CC918CB7E38000FC906 /* ViewController.h */,
-				66141CCA18CB7E38000FC906 /* ViewController.m */,
 				66141CCC18CB7E38000FC906 /* Images.xcassets */,
 				66141CBB18CB7E38000FC906 /* Supporting Files */,
 				66141CE918CB7EF3000FC906 /* TweetViewController.h */,
@@ -194,6 +192,8 @@
 				6671447B18D80A790088C774 /* BeamView.m */,
 				6671447D18D80CE20088C774 /* BeamAttachmentBehavior.h */,
 				6671447E18D80CE20088C774 /* BeamAttachmentBehavior.m */,
+				6671448B18D8AC3E0088C774 /* TweetBattleTableViewController.h */,
+				6671448C18D8AC3E0088C774 /* TweetBattleTableViewController.m */,
 			);
 			path = TweetCollection;
 			sourceTree = "<group>";
@@ -383,8 +383,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				66141CEB18CB7EF3000FC906 /* TweetViewController.m in Sources */,
+				6671448D18D8AC3E0088C774 /* TweetBattleTableViewController.m in Sources */,
 				66141CF318CD0261000FC906 /* TweetStream.m in Sources */,
-				66141CCB18CB7E38000FC906 /* ViewController.m in Sources */,
 				6671447F18D80CE20088C774 /* BeamAttachmentBehavior.m in Sources */,
 				6629718518CFFF2F00FBA326 /* Tweet.m in Sources */,
 				66141CC518CB7E38000FC906 /* AppDelegate.m in Sources */,

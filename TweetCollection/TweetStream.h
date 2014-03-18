@@ -7,7 +7,8 @@
 
 @property (nonatomic, weak) id<TweetStreamDelegate> delegate;
 
-- (void)startStreamingTweetsForHashtag:(NSString *)hashtag;
+- (void)startStreamingTweetsWithKeywords:(NSString *)keywords;
+- (void)stopStreaming;
 
 @end
 

@@ -8,6 +8,7 @@
 
 @property (nonatomic, strong) ACAccountStore *accountStore;
 @property (nonatomic, strong) NSMutableString *buffer;
+@property (nonatomic, strong) NSURLSessionDataTask *currentDataTask;
 
 @end
 
@@ -29,7 +30,7 @@
             isAvailableForServiceType:SLServiceTypeTwitter];
 }
 
-- (void)startStreamingTweetsForHashtag:(NSString *)hashtag
+- (void)startStreamingTweetsWithKeywords:(NSString *)keywords
 {
     if ([self userHasAccessToTwitter])
     {
@@ -43,7 +44,7 @@
                 
                 // Setup a streaming request.
                 NSURL *url = [NSURL URLWithString:@"https://stream.twitter.com/1.1/statuses/filter.json"];
-                NSDictionary *params = @{@"track" : hashtag};
+                NSDictionary *params = @{@"track" : keywords};
                 SLRequest *request =
                 [SLRequest requestForServiceType:SLServiceTypeTwitter
                                    requestMethod:SLRequestMethodGET
@@ -61,10 +62,19 @@
                 // Start a data task with the preauthorized prepared URL for streaming.
                 NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:[request preparedURLRequest]];
                 [dataTask resume];
+                
+                self.currentDataTask = dataTask;
             }
         }];
     }
 }
+
+- (void)stopStreaming
+{
+    [self.currentDataTask cancel];
+    self.currentDataTask = nil;
+}
+
 
 #pragma mark - NSURLSessionDelegate
 
@@ -105,14 +115,14 @@ didReceiveResponse:(NSURLResponse *)response
         [self.buffer deleteCharactersInRange:NSMakeRange(0, 2)];
 
         // Process the status
-        [self processStatus:status];
+        [self processIncomingStatus:status];
         
         // Look for the next delimiter
         delimiter = [self.buffer rangeOfString:StatusDelimiter];
     }
 }
 
-- (void)processStatus:(NSString *)status
+- (void)processIncomingStatus:(NSString *)status
 {
     // Jump to a background queue, JSON processing can be completely parallel.
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

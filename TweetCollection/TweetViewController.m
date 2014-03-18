@@ -1,11 +1,3 @@
-//
-//  TweetViewController.m
-//  TweetCollection
-//
-//  Created by Adam May on 3/8/14.
-//  Copyright (c) 2014 Livefront. All rights reserved.
-//
-
 #import "TweetViewController.h"
 #import "TweetStream.h"
 #import "Tweet.h"
@@ -18,8 +10,9 @@
 
 @end
 
-
 @implementation TweetViewController
+
+#pragma mark - Instance methods
 
 - (IBAction)addRandomTweet:(id)sender
 {
@@ -36,8 +29,16 @@
 
 - (void)stream:(TweetStream *)stream didRecieveTweet:(Tweet *)tweet
 {
-    NSLog(@"got a tweet: %@", tweet);
     int section = arc4random_uniform(2);
+    
+    if ([tweet.text rangeOfString:self.leftHashtag].location == NSNotFound)
+    {
+        section = 1;
+    }
+    else if ([tweet.text rangeOfString:self.rightHashtag].location == NSNotFound)
+    {
+        section = 0;
+    }
     
     NSURLSessionDataTask *profileImageDataTask =
     [[NSURLSession sharedSession] dataTaskWithURL:tweet.profileImageURL
@@ -45,8 +46,12 @@
                                                     NSURLResponse *response,
                                                     NSError *error) {
                                     UIImage *image = [UIImage imageWithData:data];
-                                    [self.imageCache setObject:image
-                                                        forKey:tweet.profileImageURL];
+                                    
+                                    if (image != nil)
+                                    {
+                                        [self.imageCache setObject:image
+                                                            forKey:tweet.profileImageURL];
+                                    }
                                    
                                     dispatch_async(dispatch_get_main_queue(), ^{
                                         NSMutableArray *array = [self tweetsForSection:section];
@@ -112,8 +117,23 @@
     
     self.tweetStream = [[TweetStream alloc] init];
     self.tweetStream.delegate = self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
-    [self.tweetStream startStreamingTweetsForHashtag:@"#awesome"];
+    NSString *keywords = [NSString stringWithFormat:@"%@,%@",
+                          self.leftHashtag,
+                          self.rightHashtag];
+    [self.tweetStream startStreamingTweetsWithKeywords:keywords];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.tweetStream stopStreaming];
+    
+    [super viewWillDisappear:animated];
 }
 
 @end

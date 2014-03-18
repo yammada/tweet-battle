@@ -21,10 +21,7 @@
         itemBeamAttachment.length = 60.0f;
         itemBeamAttachment.damping = 0.4f;
         itemBeamAttachment.frequency = 1.0f;
-        [self addChildBehavior:itemBeamAttachment];
-        
-        UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:@[item]];
-        [self addChildBehavior:gravity];
+        [self addChildBehavior:itemBeamAttachment];        
     }
     
     return self;

@@ -57,4 +57,12 @@
     XCTAssertEqualObjects([self.tweet.profileImageURL absoluteString], @"http://pbs.twimg.com/profile_images/378800000652825054/f7dd6ad2a48faa68bdbaa5f1ba8719dd_normal.jpeg", @"Must transform profileImagURL to an NSURL.");
 }
 
+- (void)testText
+{
+    XCTAssertNotNil(self.tweet.text, @"Msut have non-nil text");
+    XCTAssertEqualObjects(self.tweet.text,
+                          @"Where is #Coldplay? Maybe this is the greatest Rick Roll ever pulled. #itunesfestival #SXSW",
+                          @"Must transform text from JSON");
+}
+
 @end
