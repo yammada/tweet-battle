@@ -22,9 +22,11 @@ static CGSize const kItemSize = {40.0f, 40.0f};
     
     if (self)
     {
-        [self registerClass:[BeamView class] forDecorationViewOfKind:[BeamView kind]];
+        [self registerClass:[BeamView class]
+    forDecorationViewOfKind:[BeamView kind]];
 
-        self.animator = [[UIDynamicAnimator alloc] initWithCollectionViewLayout:self];
+        self.animator = [[UIDynamicAnimator alloc]
+                         initWithCollectionViewLayout:self];
     }
     
     return self;
@@ -38,7 +40,8 @@ static CGSize const kItemSize = {40.0f, 40.0f};
     
     return (CGRect)
     {
-        .origin.x = CGRectGetMidX(self.collectionView.bounds) - beamWidth * 0.5,
+        .origin.x = CGRectGetMidX(self.collectionView.bounds) -
+            beamWidth * 0.5,
         .origin.y = CGRectGetMidY(self.collectionView.bounds),
         .size.width = beamWidth,
         .size.height = 10.0f
@@ -49,8 +52,10 @@ static CGSize const kItemSize = {40.0f, 40.0f};
 {
     return (CGRect)
     {
-        .origin.x = CGRectGetMidX(self.collectionView.bounds) - kItemSize.width * 0.5,
-        .origin.y = CGRectGetMaxY(self.collectionView.bounds) + kItemSize.height,
+        .origin.x = CGRectGetMidX(self.collectionView.bounds) -
+            kItemSize.width * 0.5,
+        .origin.y = CGRectGetMaxY(self.collectionView.bounds) +
+            kItemSize.height,
         .size = kItemSize
     };
 }
@@ -67,41 +72,59 @@ static CGSize const kItemSize = {40.0f, 40.0f};
     return [self.animator itemsInRect:rect];
 }
 
-- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewLayoutAttributes *)
+    layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return [self.animator layoutAttributesForCellAtIndexPath:indexPath];
 }
 
-- (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)decorationViewKind
-                                                                  atIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewLayoutAttributes *)
+    layoutAttributesForDecorationViewOfKind:(NSString *)decorationViewKind
+                                atIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.animator layoutAttributesForDecorationViewOfKind:decorationViewKind
-                                                      atIndexPath:indexPath];
+    return [self.animator
+            layoutAttributesForDecorationViewOfKind:decorationViewKind
+                                        atIndexPath:indexPath];
 }
 
 - (void)prepareLayout
 {
     if (self.animator.behaviors.count == 0)
     {
-        UICollectionViewLayoutAttributes *beam = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:[BeamView kind]
-                                                                                                             withIndexPath:[BeamView indexPath]];
+        // Create a decoration view for the beam
+        UICollectionViewLayoutAttributes *beam;
+        beam = [UICollectionViewLayoutAttributes
+                layoutAttributesForDecorationViewOfKind:[BeamView kind]
+                                          withIndexPath:[BeamView indexPath]];
         beam.frame = [self beamFrame];
         
-        UIDynamicItemBehavior *beamProperties = [[UIDynamicItemBehavior alloc] initWithItems:@[beam]];
-        beamProperties.angularResistance = 300.0f;
-        [self.animator addBehavior:beamProperties];
+        // Adding resistance to the beam so it's harder to tip
+        UIDynamicItemBehavior *resistance;
+        resistance = [[UIDynamicItemBehavior alloc]
+                      initWithItems:@[beam]];
+        resistance.angularResistance = 300.0f;
+        [self.animator addBehavior:resistance];
         
-        UIAttachmentBehavior *attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:beam
-                                                                             attachedToAnchor:beam.center];
+        // Attach the beam to the center
+        UIAttachmentBehavior *attachmentBehavior;
+        attachmentBehavior = [[UIAttachmentBehavior alloc]
+                              initWithItem:beam
+                              attachedToAnchor:beam.center];
         [self.animator addBehavior:attachmentBehavior];
         
-        UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:@[beam]];
-        [self.animator addBehavior:gravity];
-        self.gravityBehavior = gravity;
+        // Adding gravity
+        UIGravityBehavior *gravityBehavior =
+            [[UIGravityBehavior alloc]
+             initWithItems:@[beam]];
+        [self.animator addBehavior:gravityBehavior];
+        self.gravityBehavior = gravityBehavior;
         
-        UICollisionBehavior *collisions = [[UICollisionBehavior alloc] initWithItems:@[]];
-        [self.animator addBehavior:collisions];
-        self.collisionBehavior = collisions;
+        // Setup collisions for later when items are added
+        UICollisionBehavior *collisionBehavior =
+            [[UICollisionBehavior alloc]
+             initWithItems:@[]];
+        [self.animator addBehavior:collisionBehavior];
+        self.collisionBehavior = collisionBehavior;
     }
 }
 
@@ -111,16 +134,24 @@ static CGSize const kItemSize = {40.0f, 40.0f};
     {
         if (item.updateAction == UICollectionUpdateActionInsert)
         {
+            // Set the new item's initial position
             NSIndexPath *path = item.indexPathAfterUpdate;
-            UICollectionViewLayoutAttributes *item = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
+            UICollectionViewLayoutAttributes *item;
+            item = [UICollectionViewLayoutAttributes
+                    layoutAttributesForCellWithIndexPath:path];
             item.frame = [self itemFrame];
             
-            UICollectionViewLayoutAttributes *beam = [self layoutAttributesForDecorationViewOfKind:[BeamView kind]
-                                                                                       atIndexPath:[BeamView indexPath]];
-            BeamAttachmentBehavior *beamAttachment = [[BeamAttachmentBehavior alloc]
-                                                      initWithItem:item
-                                                      attachedToBeam:beam
-                                                      onLeft:(item.indexPath.section == 0)];
+            // Grab the beam
+            UICollectionViewLayoutAttributes *beam =
+            [self layoutAttributesForDecorationViewOfKind:[BeamView kind]
+                                              atIndexPath:[BeamView indexPath]];
+            
+            BeamAttachmentBehavior *beamAttachment =
+                [[BeamAttachmentBehavior alloc]
+                     initWithItem:item
+                   attachedToBeam:beam
+                           onLeft:(item.indexPath.section == 0)];
+            
             [self.animator addBehavior:beamAttachment];
             
             [self.collisionBehavior addItem:item];

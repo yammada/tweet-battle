@@ -36,7 +36,7 @@
     {
         ACAccountType *twitterAccountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
         
-        [self.accountStore requestAccessToAccountsWithType:twitterAccountType options:Nil completion:^(BOOL granted, NSError *error) {
+        [self.accountStore requestAccessToAccountsWithType:twitterAccountType options:nil completion:^(BOOL granted, NSError *error) {
             if (granted)
             {
                 NSArray *twitterAccounts =

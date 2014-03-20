@@ -16,9 +16,9 @@
     if (self)
     {
         self.battles = @[
-                         @[@"#awesome", @"#cool"],
-                         @[@"#android", @"#iphone"],
-                         @[@"#mobilemarchadam", @"#mobilemarchsam"]
+                         @[@"#awesome", @"#cool"],                         
+                         @[@"#mobilemarchadam", @"#mobilemarchsam"],
+                         @[@"#android", @"#iphone"]
                          ];
     }
     return self;
