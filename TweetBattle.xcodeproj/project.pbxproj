@@ -78,21 +78,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		66141CB118CB7E38000FC906 /* TweetCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66141CB118CB7E38000FC906 /* TweetBattle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetBattle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66141CB418CB7E38000FC906 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		66141CB618CB7E38000FC906 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		66141CB818CB7E38000FC906 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		66141CBC18CB7E38000FC906 /* TweetCollection-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TweetCollection-Info.plist"; sourceTree = "<group>"; };
+		66141CBC18CB7E38000FC906 /* TweetBattle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TweetBattle-Info.plist"; sourceTree = "<group>"; };
 		66141CBE18CB7E38000FC906 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		66141CC018CB7E38000FC906 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		66141CC218CB7E38000FC906 /* TweetCollection-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TweetCollection-Prefix.pch"; sourceTree = "<group>"; };
+		66141CC218CB7E38000FC906 /* TweetBattle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TweetBattle-Prefix.pch"; sourceTree = "<group>"; };
 		66141CC318CB7E38000FC906 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		66141CC418CB7E38000FC906 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		66141CC718CB7E38000FC906 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		66141CCC18CB7E38000FC906 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		66141CD218CB7E38000FC906 /* TweetCollectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TweetCollectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		66141CD218CB7E38000FC906 /* TweetBattleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TweetBattleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66141CD318CB7E38000FC906 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		66141CDB18CB7E38000FC906 /* TweetCollectionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TweetCollectionTests-Info.plist"; sourceTree = "<group>"; };
+		66141CDB18CB7E38000FC906 /* TweetBattleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TweetBattleTests-Info.plist"; sourceTree = "<group>"; };
 		66141CDD18CB7E38000FC906 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		66141CE918CB7EF3000FC906 /* TweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewController.h; sourceTree = "<group>"; };
 		66141CEA18CB7EF3000FC906 /* TweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewController.m; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		66141CA818CB7E38000FC906 = {
 			isa = PBXGroup;
 			children = (
-				66141CBA18CB7E38000FC906 /* TweetCollection */,
+				66141CBA18CB7E38000FC906 /* TweetBattle */,
 				66141CD918CB7E38000FC906 /* TweetCollectionTests */,
 				66141CB318CB7E38000FC906 /* Frameworks */,
 				66141CB218CB7E38000FC906 /* Products */,
@@ -153,8 +153,8 @@
 		66141CB218CB7E38000FC906 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				66141CB118CB7E38000FC906 /* TweetCollection.app */,
-				66141CD218CB7E38000FC906 /* TweetCollectionTests.xctest */,
+				66141CB118CB7E38000FC906 /* TweetBattle.app */,
+				66141CD218CB7E38000FC906 /* TweetBattleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,7 +172,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		66141CBA18CB7E38000FC906 /* TweetCollection */ = {
+		66141CBA18CB7E38000FC906 /* TweetBattle */ = {
 			isa = PBXGroup;
 			children = (
 				66141CC318CB7E38000FC906 /* AppDelegate.h */,
@@ -195,16 +195,16 @@
 				6671448B18D8AC3E0088C774 /* TweetBattleTableViewController.h */,
 				6671448C18D8AC3E0088C774 /* TweetBattleTableViewController.m */,
 			);
-			path = TweetCollection;
+			path = TweetBattle;
 			sourceTree = "<group>";
 		};
 		66141CBB18CB7E38000FC906 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				66141CBC18CB7E38000FC906 /* TweetCollection-Info.plist */,
+				66141CBC18CB7E38000FC906 /* TweetBattle-Info.plist */,
 				66141CBD18CB7E38000FC906 /* InfoPlist.strings */,
 				66141CC018CB7E38000FC906 /* main.m */,
-				66141CC218CB7E38000FC906 /* TweetCollection-Prefix.pch */,
+				66141CC218CB7E38000FC906 /* TweetBattle-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -215,13 +215,14 @@
 				66141CDA18CB7E38000FC906 /* Supporting Files */,
 				6629718618D0039300FBA326 /* TweetTests.m */,
 			);
-			path = TweetCollectionTests;
+			name = TweetCollectionTests;
+			path = TweetBattleTests;
 			sourceTree = "<group>";
 		};
 		66141CDA18CB7E38000FC906 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				66141CDB18CB7E38000FC906 /* TweetCollectionTests-Info.plist */,
+				66141CDB18CB7E38000FC906 /* TweetBattleTests-Info.plist */,
 				66141CDC18CB7E38000FC906 /* InfoPlist.strings */,
 				6629718818D0052700FBA326 /* tweet.json */,
 			);
@@ -243,9 +244,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		66141CB018CB7E38000FC906 /* TweetCollection */ = {
+		66141CB018CB7E38000FC906 /* TweetBattle */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 66141CE318CB7E38000FC906 /* Build configuration list for PBXNativeTarget "TweetCollection" */;
+			buildConfigurationList = 66141CE318CB7E38000FC906 /* Build configuration list for PBXNativeTarget "TweetBattle" */;
 			buildPhases = (
 				66141CAD18CB7E38000FC906 /* Sources */,
 				66141CAE18CB7E38000FC906 /* Frameworks */,
@@ -255,14 +256,14 @@
 			);
 			dependencies = (
 			);
-			name = TweetCollection;
+			name = TweetBattle;
 			productName = TweetCollection;
-			productReference = 66141CB118CB7E38000FC906 /* TweetCollection.app */;
+			productReference = 66141CB118CB7E38000FC906 /* TweetBattle.app */;
 			productType = "com.apple.product-type.application";
 		};
-		66141CD118CB7E38000FC906 /* TweetCollectionTests */ = {
+		66141CD118CB7E38000FC906 /* TweetBattleTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 66141CE618CB7E38000FC906 /* Build configuration list for PBXNativeTarget "TweetCollectionTests" */;
+			buildConfigurationList = 66141CE618CB7E38000FC906 /* Build configuration list for PBXNativeTarget "TweetBattleTests" */;
 			buildPhases = (
 				66141CCE18CB7E38000FC906 /* Sources */,
 				66141CCF18CB7E38000FC906 /* Frameworks */,
@@ -273,9 +274,9 @@
 			dependencies = (
 				66141CD818CB7E38000FC906 /* PBXTargetDependency */,
 			);
-			name = TweetCollectionTests;
+			name = TweetBattleTests;
 			productName = TweetCollectionTests;
-			productReference = 66141CD218CB7E38000FC906 /* TweetCollectionTests.xctest */;
+			productReference = 66141CD218CB7E38000FC906 /* TweetBattleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -292,7 +293,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 66141CAC18CB7E38000FC906 /* Build configuration list for PBXProject "TweetCollection" */;
+			buildConfigurationList = 66141CAC18CB7E38000FC906 /* Build configuration list for PBXProject "TweetBattle" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -311,8 +312,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				66141CB018CB7E38000FC906 /* TweetCollection */,
-				66141CD118CB7E38000FC906 /* TweetCollectionTests */,
+				66141CB018CB7E38000FC906 /* TweetBattle */,
+				66141CD118CB7E38000FC906 /* TweetBattleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -407,7 +408,7 @@
 /* Begin PBXTargetDependency section */
 		66141CD818CB7E38000FC906 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 66141CB018CB7E38000FC906 /* TweetCollection */;
+			target = 66141CB018CB7E38000FC906 /* TweetBattle */;
 			targetProxy = 66141CD718CB7E38000FC906 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -520,10 +521,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TweetCollection/TweetCollection-Prefix.pch";
-				INFOPLIST_FILE = "TweetCollection/TweetCollection-Info.plist";
+				GCC_PREFIX_HEADER = "TweetBattle/TweetBattle-Prefix.pch";
+				INFOPLIST_FILE = "TweetBattle/TweetBattle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TweetBattle;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -535,10 +536,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TweetCollection/TweetCollection-Prefix.pch";
-				INFOPLIST_FILE = "TweetCollection/TweetCollection-Info.plist";
+				GCC_PREFIX_HEADER = "TweetBattle/TweetBattle-Prefix.pch";
+				INFOPLIST_FILE = "TweetBattle/TweetBattle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TweetBattle;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -560,8 +561,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "TweetCollectionTests/TweetCollectionTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "TweetCollectionTests/TweetBattleTests-Info.plist";
+				PRODUCT_NAME = TweetBattleTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -579,8 +580,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TweetCollection/TweetCollection-Prefix.pch";
-				INFOPLIST_FILE = "TweetCollectionTests/TweetCollectionTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "TweetCollectionTests/TweetBattleTests-Info.plist";
+				PRODUCT_NAME = TweetBattleTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -589,7 +590,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		66141CAC18CB7E38000FC906 /* Build configuration list for PBXProject "TweetCollection" */ = {
+		66141CAC18CB7E38000FC906 /* Build configuration list for PBXProject "TweetBattle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				66141CE118CB7E38000FC906 /* Debug */,
@@ -598,7 +599,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		66141CE318CB7E38000FC906 /* Build configuration list for PBXNativeTarget "TweetCollection" */ = {
+		66141CE318CB7E38000FC906 /* Build configuration list for PBXNativeTarget "TweetBattle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				66141CE418CB7E38000FC906 /* Debug */,
@@ -607,7 +608,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		66141CE618CB7E38000FC906 /* Build configuration list for PBXNativeTarget "TweetCollectionTests" */ = {
+		66141CE618CB7E38000FC906 /* Build configuration list for PBXNativeTarget "TweetBattleTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				66141CE718CB7E38000FC906 /* Debug */,

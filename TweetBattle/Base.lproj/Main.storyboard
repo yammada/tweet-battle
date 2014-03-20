@@ -58,7 +58,7 @@
             </objects>
             <point key="canvasLocation" x="-1018" y="-185"/>
         </scene>
-        <!--Tweet Battle Table View Controller-->
+        <!--Tweet Battle Table View Controller - Tweet Battle-->
         <scene sceneID="9To-Sk-IAA">
             <objects>
                 <tableViewController id="5at-z3-AJ7" customClass="TweetBattleTableViewController" sceneMemberID="viewController">
@@ -86,7 +86,7 @@
                             <outlet property="delegate" destination="5at-z3-AJ7" id="azA-R4-EQz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="xcJ-kg-EEE"/>
+                    <navigationItem key="navigationItem" title="Tweet Battle" id="xcJ-kg-EEE"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xD2-5V-zbu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
